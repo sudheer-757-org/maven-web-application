@@ -87,7 +87,14 @@
 		</dependency>
 
 	</dependencies>
-	
+	 <repositories>        
+		 <repository>         
+			 <id>central</id>          
+		 <url>http://localhost:8081/repository/libs-proxy/</url>         
+		 <releases><enabled>true</enabled></releases>         
+		 <snapshots><enabled>true</enabled></snapshots>       
+		 </repository>     
+	</repositories>
 	<distributionManagement>
 	    <repository>
 	      <id>nexus</id>
