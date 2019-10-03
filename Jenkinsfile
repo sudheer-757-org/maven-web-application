@@ -14,14 +14,13 @@ node('master')
 
   def MavenHome = tool name: 'Maven3.6.1', type:'maven'
   
-   properties([
+ /*  properties([
        buildDiscarder(logRotator(numToKeepStr: '3')),
        pipelineTriggers([
            pollSCM('* * * * *')
        ])
-   ])
-   
-        /*
+   ])*/
+	
         stage('CheckoutCode'){
         git branch: 'development', credentialsId: '2587140f-2970-4f0e-aac3-62624e3d9682', url: 'https://github.com/MithunTechnologiesDevOps/maven-web-application.git'
         }
@@ -32,13 +31,13 @@ node('master')
            sh "${MavenHome}/bin/mvn clean package"
         }
         
-        stage('ExecuteSonarQubeReport'){
+       /* stage('ExecuteSonarQubeReport'){
             sh "${MavenHome}/bin/mvn sonar:sonar"
         }
         
         stage('UploadArtifact'){
             sh "${MavenHome}/bin/mvn deploy"
-        }
+        }*/
         
         stage('DeployApplication'){
   
@@ -46,7 +45,7 @@ node('master')
          sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.233.149.177:/opt/apache-tomcat-9.0.22/webapps/maven-web-application.war"
 	    }
          }
-          */
+          /*
      stage('EmailNotification'){
          emailext body: '''Build is over
          Please check the logs...
@@ -56,6 +55,6 @@ node('master')
          Bangalore.
          ''', subject: 'Build done', to: 'devopstrainingblr@gmail.com'
          
-         }
+         } */
 
 }
