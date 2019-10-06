@@ -33,12 +33,12 @@ echo "JOB Name ${env.JOB_NAME}"
       sh "${mvnHome}/bin/mvn clean package"
 	 
     }
-    stage('SonarQubeReport'){
+  /*  stage('SonarQubeReport'){
 	
 	sh "${mvnHome}/bin/mvn clean sonar:sonar"
 	
 	}
-	
+	*/
 	stage('UploadArtifacts'){
 	
 	sh "${mvnHome}/bin/mvn clean deploy"
